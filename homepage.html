@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="NetSuite for Birst">
+	<title>EcoSense</title>
+	
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<!-- landing  -->
+	<div id="page-landing" class="pages">
+
+		<div class="page-upper">
+			<div class="page-title">
+				<p>EcoSense Energy Gauge</p>
+			</div>	
+		</div>
+
+		<div class="page-lower">
+			<div class="location-img" id="bed1">
+				<img src="image/bed1.png" class="img-circle">
+				<p>BEDROOM1</p>
+			</div>
+			<div class="location-img" id="bed2">
+				<img src="image/bed2.png" class="img-circle">
+				<p>BEDROOM2</p>
+			</div>
+			<div class="location-img" id="bed3">
+				<img src="image/bed3.png" class="img-circle">
+				<p>BEDROOM3</p>
+			</div>
+			<div class="location-img" id="garage">
+				<img src="image/garage.png" class="img-circle">
+				<p>GARAGE</p>
+			</div>
+			<div class="location-img" id="living">
+				<img src="image/living.png" class="img-circle">
+				<p>LIVING ROOM</p>
+			</div>
+			<div class="location-img" id="kitchen">
+				<img src="image/kitchen.png" class="img-circle">
+				<p>KITCHEN</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- measure -->
+	<div id="page-measure" class="pages">
+
+		<div class="page-upper">
+			<div class="page-head" id="pre-home">
+				<img class="img-arrow" src="image/arrow.png">
+				<div class="pre-page">Home</div>
+			</div>
+			<div class="page-title">
+				<p>What type of measurement?</p>
+			</div>
+		</div>
+
+		<div class="page-lower">
+			<button class="btn btn-primary btn-measure"  id="btn-ambient" data-target="#confirm-box-modal">AMBIENT TEMPERATURE</button>
+			<button class="btn btn-primary btn-measure"  id="btn-insulation" data-target="#confirm-box-modal">EFFICIENCY OF INSULATION</button>
+		</div>
+	</div>
+
+	<!-- insulation input -->
+	<div id="page-insulation1" class="pages">
+
+		<div class="page-upper">
+			<div class="page-head" id="pre-measure">
+				<img class="img-arrow" src="image/arrow.png">
+				<div class="pre-page">Select Measurement</div>
+			</div>
+			<div class="page-title">
+				<p>Scan &amp; input the values</p>
+			</div>
+		</div>
+
+		<div class="page-lower">
+			<div class="form-group">
+			    <label for="inputOutside" class="col-sm-2 control-label">Outside</label>
+			    <div class="col-sm-10">
+			      	<input type="number" class="form-control" id="inputOutside" placeholder="Temperature (F)">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="inputInterior" class="col-sm-2 control-label">Interior Wall</label>
+			    <div class="col-sm-10">
+			      	<input type="number" class="form-control" id="inputInterior" placeholder="Temperature (F)">
+			    </div>
+		  	</div>
+		  	<div class="form-group">
+			    <label for="inputExterior" class="col-sm-2 control-label">Exterior Wall</label>
+			    <div class="col-sm-10">
+			      	<input type="number" class="form-control" id="inputExterior" placeholder="Temperature (F)">
+			    </div>
+		  	</div>
+
+			<button class="btn btn-primary btn-measure"  id="btn-result" data-target="#confirm-box-modal">VIEW RESULT</button>
+		</div>
+	</div>
+
+	<!-- insulation result -->
+	<div id="page-insulation2" class="pages">
+
+		<div class="page-upper">
+			<div class="page-head" id="pre-insulation">
+				<img class="img-arrow" src="image/arrow.png">
+				<div class="pre-page">Input values</div>
+			</div>
+			<div class="page-title">
+				<p>EFFICIENCY OF INSULATION</p>
+			</div>
+		</div>
+
+		<div class="page-lower">
+
+		</div>
+	</div>
+
+	<!-- ambient result-->
+	<div id="page-ambient" class="pages">
+
+		<div class="page-upper">
+			<div class="page-head" id="pre-measure-a">
+				<img class="img-arrow" src="image/arrow.png">
+				<div class="pre-page">Select Measurement</div>
+			</div>
+			<div class="page-title">
+				<p>AMBIENT TEMPERATURE</p>
+			</div>
+		</div>
+
+		<div class="page-lower">
+
+		</div>
+	</div>
+
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

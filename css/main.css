@@ -1,0 +1,29 @@
+/* Main Page Elements */
+html {height: 100%;}
+body {height: 100%; font-family: "HelveticaNeue-Thin", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;}
+.pages {display: none; width: 100%; height: 100%; background-color: rgb(248, 248, 248); text-align: center;}
+.page-upper {background-color: rgb(248, 248, 248); min-height:300px; height: 35%; width: 100%; }
+.page-head {height: 48px; width: 100%; background-color: rgb(228,228,228); box-shadow: 0px 1px 1px rgba(100,100,100,.5); cursor: pointer;}
+.page-lower {background-color: rgb(248, 248, 248); height: 65%; width: 100%; padding-top: 20px;}
+
+
+/* Reusable Classes */
+.page-title {position: relative; bottom: -110px; font-size: 34px; font-family: "HelveticaNeue-UltraLight";}
+.location-img {width:33%; float: left; height: 200px; text-align: center; margin-top: 20px; cursor: pointer;}
+.img-circle {height:120px; width: 120px;}
+.location-img p {margin-top: 10px;}
+
+.img-arrow {float: left; top: 12px; position: relative; height: 24px; margin-left: 20px; margin-right: 10px;}
+.pre-page {float: left; top: 13px; position: relative; color:rgb(100,100,100);}
+.btn-measure {width: 80%; margin-top: 20px; padding: 10px; border-radius: 3px; height: 50px; border: 0px; box-shadow: 0px -4px 0px rgba(0,0,0,.2) inset;}
+.form-group {width: 90%; height: 55px; margin-left: 5%;}
+.control-label {position: relative; top: 13px; font-family: "HelveticaNeue-Thin"; color: rgb(100,100,100);}
+.form-control {height: 44px;}
+
+
+/* unique ids */
+#btn-ambient {background-color: #FF6E6E;}
+#btn-insulation {background-color: #7AD9E1;}
+
+/* State Changes */
+#page-landing {display: inline;}
