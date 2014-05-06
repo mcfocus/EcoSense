@@ -1,3 +1,4 @@
+var myLocationID;
 var myLocation;
 var myMeasurement;
 var outsideT; var interiorT; var exteriorT;
@@ -18,8 +19,11 @@ $(document).ready(function() {
 	
 	//landing -> measure	
 	$('.location-img').on('click', function () {
-		myLocation = $(this).attr("id");
-		
+		myLocationID = $(this).attr("id");
+
+		myLocation = $(this).children('p').text();
+		$('.my-location').text(myLocation);
+
 		$('#page-landing').hide();
 		$('#page-measure').show();
 	})
@@ -29,7 +33,7 @@ $(document).ready(function() {
 		$('#page-measure').hide();
 		$('#page-ambient').show();
 		//Generate d3js result
-		ShowAmbientResult(myLocation);
+		ShowAmbientResult(myLocationID);
 	})
 
 	//measure -> insulation input
@@ -56,6 +60,7 @@ $(document).ready(function() {
 
 	// ----> recommendations
 	$('.btn-rec').on('click', function () {
+		$('svg').remove();
 		$('#page-insulation2').hide();
 		$('#page-ambient').hide();
 		$('#page-rec').show();
@@ -113,63 +118,133 @@ function CalculateEfficiency (outside, interior, exterior) {
 
 
 function ShowAmbientResult (location) {
-	var margin = {top: 20, right: 20, bottom: 30, left: 40},
-	    width = 960 - margin.left - margin.right,
-	    height = 500 - margin.top - margin.bottom;
+	var t = 1297110663, // start time (seconds since epoch)
+      	v = 70, // start value (subscribers)
+      	data = d3.range(33).map(next); // starting dataset
+  
+  	function next() {
+    	return {
+      		time: ++t,
+      		value: v = ~~Math.max(10, Math.min(90, v + 10 * (Math.random() - .5)))
+    	};
+ 	};
 
-	var x = d3.scale.ordinal()
-	    .rangeRoundBands([0, width], .1);
+ 	setInterval(function() {
+   		data.shift();
+	   	data.push(next());
+	    redraw();
+	}, 2000);
 
-	var y = d3.scale.linear()
-	    .range([height, 0]);
+	var w = 41, h = 330; //maximum bar size
 
-	var xAxis = d3.svg.axis()
-	    .scale(x)
-	    .orient("bottom");
+	var x = d3.scale.linear().domain([0, 1]).range([0, w]);
+	var y = d3.scale.linear().domain([0, 100]).rangeRound([0, h]);
 
-	var yAxis = d3.svg.axis()
-	    .scale(y)
-	    .orient("left")
-	    .ticks(10, "%");
+	var chart = d3.select("#ambient-result").append("svg")
+		.attr("class", "chart")
+		.attr("width", w * data.length - 1)
+		.attr("height", h);
 
-	var svg = d3.select("#ambient-result").append("svg")
-	    .attr("width", width + margin.left + margin.right)
-	    .attr("height", height + margin.top + margin.bottom)
-	  .append("g")
-	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	chart.selectAll("rect")
+		.data(data)
+		.enter().append("rect")
+		.attr("x", function(d, i) { return x(i) - .5; })
+		.attr("y", function(d) { return h - y(d.value) - .5; })
+		.attr("width", w)
+		.attr("height", function(d) { return y(d.value); });
 
-	d3.tsv("data/data.tsv", type, function(error, data) {
-	  x.domain(data.map(function(d) { return d.TIME; }));
-	  y.domain([0, d3.max(data, function(d) { return d.VALUE; })]);
+	chart.append("line")
+		.attr("x1", 0)
+		.attr("x2", w * data.length)
+		.attr("y1", h - .5)
+		.attr("y2", h - .5)
+		.style("stroke", "rgb(251,251,251)");
 
-	  svg.append("g")
-	      .attr("class", "x axis")
-	      .attr("transform", "translate(0," + height + ")")
-	      .call(xAxis);
+	function redraw() {
+		var rect = chart.selectAll("rect")
+			.data(data, function(d) { return d.time; });
 
-	  svg.append("g")
-	      .attr("class", "y axis")
-	      .call(yAxis)
-	    .append("text")
-	      .attr("transform", "rotate(-90)")
-	      .attr("y", 6)
-	      .attr("dy", ".71em")
-	      .style("text-anchor", "end")
-	      .text("VALUE");
-
-	  svg.selectAll(".bar")
-	      .data(data)
-	    .enter().append("rect")
-	      .attr("class", "bar")
-	      .attr("x", function(d) { return x(d.TIME); })
-	      .attr("width", x.rangeBand())
-	      .attr("y", function(d) { return y(d.VALUE); })
-	      .attr("height", function(d) { return height - y(d.VALUE); });
-
-	});
-
-	function type(d) {
-	  d.VALUE = +d.VALUE;
-	  return d;
+		rect.enter().insert("rect", "line")
+			.attr("x", function(d, i) { return x(i + 1) - .5; })
+			.attr("y", function(d) { return h - y(d.value) - .5; })
+			.attr("width", w)
+			.attr("height", function(d) { return y(d.value); })
+			.transition()
+			.duration(1000)
+			.attr("x", function(d, i) { return x(i) - .5; });
+	
+		rect.transition()
+			.duration(1000)
+			.attr("x", function(d, i) { return x(i) - .5; });
+	
+		rect.exit().transition()
+			.duration(1000)
+			.attr("x", function(d, i) { return x(i - 1) - .5; })
+			.remove();
 	}
+
+
+	
+
+
 }
+
+	// var margin = {top: 20, right: 20, bottom: 30, left: 40},
+	//     width = 960 - margin.left - margin.right,
+	//     height = 500 - margin.top - margin.bottom;
+
+	// var x = d3.scale.ordinal()
+	//     .rangeRoundBands([0, width], .1);
+
+	// var y = d3.scale.linear()
+	//     .range([height, 0]);
+
+	// var xAxis = d3.svg.axis()
+	//     .scale(x)
+	//     .orient("bottom");
+
+	// var yAxis = d3.svg.axis()
+	//     .scale(y)
+	//     .orient("left")
+	//     .ticks(10, "%");
+
+	// var svg = d3.select("#ambient-result").append("svg")
+	//     .attr("width", width + margin.left + margin.right)
+	//     .attr("height", height + margin.top + margin.bottom)
+	//   .append("g")
+	//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	// d3.tsv("data/data.tsv", type, function(error, data) {
+	//   x.domain(data.map(function(d) { return d.TIME; }));
+	//   y.domain([0, d3.max(data, function(d) { return d.VALUE; })]);
+
+	//   svg.append("g")
+	//       .attr("class", "x axis")
+	//       .attr("transform", "translate(0," + height + ")")
+	//       .call(xAxis);
+
+	//   svg.append("g")
+	//       .attr("class", "y axis")
+	//       .call(yAxis)
+	//     .append("text")
+	//       .attr("transform", "rotate(-90)")
+	//       .attr("y", 6)
+	//       .attr("dy", ".71em")
+	//       .style("text-anchor", "end")
+	//       .text("VALUE");
+
+	//   svg.selectAll(".bar")
+	//       .data(data)
+	//     .enter().append("rect")
+	//       .attr("class", "bar")
+	//       .attr("x", function(d) { return x(d.TIME); })
+	//       .attr("width", x.rangeBand())
+	//       .attr("y", function(d) { return y(d.VALUE); })
+	//       .attr("height", function(d) { return height - y(d.VALUE); });
+
+	// });
+
+	// function type(d) {
+	//   d.VALUE = +d.VALUE;
+	//   return d;
+	// }
