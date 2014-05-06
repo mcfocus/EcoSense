@@ -46,12 +46,21 @@ $(document).ready(function() {
 			outsideT = $('#inputOutside').val();
 			interiorT = $('#inputInterior').val();
 			exteriorT = $('#inputExterior').val();
-			//alert(exteriorT);
+			
 			CalculateEfficiency(outsideT, interiorT, exteriorT);
+			
 			$('#page-insulation1').hide();
 			$('#page-insulation2').show();
 		};
 	})
+
+	// ----> recommendations
+	$('.btn-rec').on('click', function () {
+		$('#page-insulation2').hide();
+		$('#page-ambient').hide();
+		$('#page-rec').show();
+	})
+
 
 /////page back
 
@@ -76,6 +85,11 @@ $(document).ready(function() {
 		$('#page-ambient').hide();
 		$('#page-measure').show();
 	})
+	//measure -> landing
+	$('#go-home').on('click', function () {
+		$('#page-rec').hide();
+		$('#page-landing').show();
+	})
 
 
 
@@ -83,16 +97,18 @@ $(document).ready(function() {
 
 function CalculateEfficiency (outside, interior, exterior) {
 	var WallDifference = Math.round((interior - exterior) / 5);
-	//alert('WallDifference: ' + WallDifference);
 	WallDifference = Math.abs(WallDifference);
 	var OutsideT = Math.round(((outside-32)*(5/9))/10)+4;
-	//alert('OutsideT: ' + OutsideT);
-	var RValue = RChart[OutsideT][WallDifference];
-	//alert('RValue: ' + RValue);
-	$('#rvalue').text(RValue);
 
-	var RValue_parsed = Math.sqrt(RValue * 1000);
-	$('#img-efficiency').width(RValue_parsed);
+	if ((WallDifference > 8) && (OutsideT > 8)) {
+		return '';
+	} else {
+		var RValue = RChart[OutsideT][WallDifference];
+
+		$('#rvalue').text(RValue);
+		var RValue_parsed = Math.sqrt(RValue * 1000);
+		$('#img-efficiency').width(RValue_parsed);
+	};
 }
 
 

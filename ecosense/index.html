@@ -5,10 +5,15 @@
 	<meta name="description" content="NetSuite for Birst">
 	<title>EcoSense</title>
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0 user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 	
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="css/main.css">
+	<link href="image/app-icon-ios7.png"
+      sizes="120x120"
+      rel="apple-touch-icon">
 </head>
 
 <body>
@@ -29,6 +34,7 @@
 		</div>
 
 		<div class="page-lower">
+			<div class="page-thin">
 			<div class="location-img" id="bed1">
 				<img src="image/bed1.png" class="img-circle">
 				<p>BEDROOM1</p>
@@ -53,6 +59,7 @@
 				<img src="image/kitchen.png" class="img-circle">
 				<p>KITCHEN</p>
 			</div>
+			</div>
 		</div>
 	</div>
 
@@ -65,7 +72,7 @@
 				<div class="pre-page">Home</div>
 			</div>
 			<div class="page-title">
-				<p>What type of measurement?</p>
+				<p>Select Measurement</p>
 			</div>
 		</div>
 
@@ -84,19 +91,19 @@
 				<div class="pre-page">Select Measurement</div>
 			</div>
 			<div class="page-title">
-				<p><a href="#">Scan</a> &amp; input the values</p>
+				<p><a href="#">Scan</a> &amp; Input Values</p>
 			</div>
 		</div>
 
 		<div class="page-lower">
 			<div class="form-group">
-		      	<input type="number" class="forms" id="inputOutside" placeholder="Outside Temperature (F)">
+		      	<input type="number" pattern="\d*" class="forms" id="inputOutside" placeholder="Outside Temperature (F)">
 			</div>
 			<div class="form-group">
-			    <input type="number" class="forms" id="inputInterior" placeholder="Interior Wall Temperature (F)">
+			    <input type="number" pattern="\d*" class="forms" id="inputInterior" placeholder="Interior Wall Temperature (F)">
 		  	</div>
 		  	<div class="form-group">
-			    <input type="number" class="forms" id="inputExterior" placeholder="Exterior Wall Temperature (F)">
+			    <input type="number" pattern="\d*" class="forms" id="inputExterior" placeholder="Exterior Wall Temperature (F)">
 		  	</div>
 
 			<button class="btn btn-primary btn-measure"  id="btn-result" data-target="#confirm-box-modal">VIEW RESULT</button>
@@ -112,12 +119,45 @@
 				<div class="pre-page">Input values</div>
 			</div>
 			<div class="page-title">
-				<p>EFFICIENCY OF INSULATION: <b id="rvalue">___</b></p>
+				<p>Insulation Efficiency: <b id="rvalue">___</b></p>
 			</div>
 		</div>
 
 		<div class="page-lower">
-		<img id="img-efficiency" src="image/acorn.png">
+			<img id="img-efficiency" src="image/acorn.png">
+		</div>
+		<div class="page-bottom">
+			<button class="btn btn-primary btn-measure btn-rec" data-target="#confirm-box-modal">VIEW RECOMMENDATIONS</button>
+		</div>
+	</div>
+
+	<!-- recommendations -->
+	<div class="pages" id="page-rec">
+
+		<div class="page-upper">
+			<div class="page-head" id="go-home">
+				<img class="img-arrow" src="image/arrow.png">
+				<div class="pre-page">Home</div>
+			</div>
+			<div class="page-title">
+				<p>Recommendations</p>
+			</div>
+		</div>
+
+		<div class="page-lower">
+			<div class="rec-cell">
+				<div class="cell-title">To decrease temperature</div>
+				<div class="cell-content">Open your windows to cool down the ambient temperature</div>
+			</div>
+			<div class="rec-cell">
+				<div class="cell-title">To decrease temperature</div>
+				<div class="cell-content">Turning off unused electronics will make the room cooler</div>
+			</div>
+			<div class="rec-cell">
+				<div class="cell-title">To decrease temperature</div>
+				<div class="cell-content">Closing the curtain can prevent sunlight from warming up your room</div>
+			</div>
+			</div>
 		</div>
 	</div>
 
@@ -135,6 +175,10 @@
 		</div>
 
 		<div class="page-lower" id="ambient-result">
+		</div>
+
+		<div class="page-bottom">
+			<button class="btn btn-primary btn-measure btn-rec" data-target="#confirm-box-modal">VIEW RECOMMENDATIONS</button>
 		</div>
 	</div>
 
