@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="NetSuite for Birst">
 	<title>EcoSense</title>
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0 user-scalable=no"/>
 	
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
@@ -11,12 +12,19 @@
 </head>
 
 <body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+
 	<!-- landing  -->
 	<div id="page-landing" class="pages">
 
 		<div class="page-upper">
 			<div class="page-title">
-				<p>EcoSense Energy Gauge</p>
+				<img src="image/logo.png">
 			</div>	
 		</div>
 
@@ -104,12 +112,12 @@
 				<div class="pre-page">Input values</div>
 			</div>
 			<div class="page-title">
-				<p>EFFICIENCY OF INSULATION</p>
+				<p>EFFICIENCY OF INSULATION: <b id="rvalue">___</b></p>
 			</div>
 		</div>
 
 		<div class="page-lower">
-
+		<img id="img-efficiency" src="image/acorn.png">
 		</div>
 	</div>
 
@@ -126,18 +134,9 @@
 			</div>
 		</div>
 
-		<div class="page-lower">
-
+		<div class="page-lower" id="ambient-result">
 		</div>
 	</div>
-
-
-
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
 
 </body>
 </html>
