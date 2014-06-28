@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="NetSuite for Birst">
+	<meta name="description" content="">
 	<title>EcoSense</title>
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0 user-scalable=no"/>
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -133,15 +133,15 @@
 			<img id="img-efficiency" src="image/acorn.png">
 		</div>
 		<div class="page-bottom">
-			<button class="btn btn-primary btn-measure btn-rec" data-target="#confirm-box-modal">VIEW RECOMMENDATIONS</button>
+			<button class="btn btn-primary btn-measure btn-rec-eff" data-target="#confirm-box-modal">HISTORY / RECOMMENDATIONS</button>
 		</div>
 	</div>
 
-	<!-- recommendations -->
-	<div class="pages" id="page-rec">
+	<!-- recommendations for eff -->
+	<div class="pages" id="page-rec-eff">
 
 		<div class="page-upper">
-			<div class="page-head" id="go-home">
+			<div class="page-head" class="go-home">
 				<img class="img-arrow" src="image/arrow.png">
 				<div class="pre-page">Home</div>
 				<img class="img_feather" src="image/feather.png">
@@ -150,11 +150,26 @@
 				<img class="img_feather" src="image/feather.png">
 			</div>
 			<div class="page-title">
-				<p>Recommendations</p>
+				<p>History / Recommendations</p>
 			</div>
 		</div>
 
 		<div class="page-lower">
+			<div class="history">
+				<div class="history-cell" id="history1">
+					<img src="image/acorn.png">
+				</div>
+				<div class="history-cell" id="history2">
+					<img src="image/acorn.png">
+				</div>
+				<div class="history-cell" id="history3">
+					<img src="image/acorn.png">
+				</div>
+				<div class="history-cell" id="history4">
+					<img src="image/acorn.png">
+				</div>
+			</div>
+
 			<div class="rec-cell">
 				<div class="cell-title">Open your windows</div>
 				<div class="cell-content">To cool down the ambient temperature</div>
@@ -196,7 +211,45 @@
 		</div>
 
 		<div class="page-bottom">
-			<button class="btn btn-primary btn-measure btn-rec" data-target="#confirm-box-modal">VIEW RECOMMENDATIONS</button>
+			<button class="btn btn-primary btn-measure btn-rec-amb" data-target="#confirm-box-modal">VIEW RECOMMENDATIONS</button>
+		</div>
+	</div>
+
+	<!-- recommendations for amb-->
+	<div class="pages" id="page-rec-amb">
+
+		<div class="page-upper">
+			<div class="page-head" class="go-home">
+				<img class="img-arrow" src="image/arrow.png">
+				<div class="pre-page">Home</div>
+				<img class="img_feather" src="image/feather.png">
+				<img class="img_feather" src="image/feather.png">
+				<img class="img_feather" src="image/feather.png">
+				<img class="img_feather" src="image/feather.png">
+			</div>
+			<div class="page-title">
+				<p>Recommendations</p>
+			</div>
+		</div>
+
+		<div class="page-lower">
+			<div class="rec-cell">
+				<div class="cell-title">Open your windows</div>
+				<div class="cell-content">To cool down the ambient temperature</div>
+			</div>
+			<div class="rec-cell">
+				<div class="cell-title">Turning off unused electronics </div>
+				<div class="cell-content">Will make the room cooler</div>
+			</div>
+			<div class="rec-cell">
+				<div class="cell-title">Closing the curtain</div>
+				<div class="cell-content">Can prevent sunlight from warming up your room</div>
+			</div>
+			<div class="rec-cell">
+				<div class="cell-title">Closing the curtain</div>
+				<div class="cell-content">Can prevent sunlight from warming up your room</div>
+			</div>
+			</div>
 		</div>
 	</div>
 

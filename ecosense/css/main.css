@@ -8,7 +8,7 @@ body {font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neu
 
 
 /* Reusable Classes */
-.page-thin {width: 92%; margin-left: 4%;}
+.page-thin {width: 92%; margin-left: 4%; max-width: 600px; margin-left: auto; margin-right: auto;}
 .page-title {position: relative; bottom: -24px; font-size: 2em; font-family: "HelveticaNeue-Light"; color: rgb(100,100,100);}
 .location-img {width:33%; float: left; height: 140px; text-align: center; margin-top: 20px; cursor: pointer;}
 .img-circle {height:82px; width: 82px;}
@@ -28,14 +28,17 @@ input {font-size: 1.25em; padding-left: 20px;}
 .cell-title {width: 100%; height: 31px; font-size: 1.3em; font-family: "HelveticaNeue-Bold"; border-bottom: 1px rgb(220,220,220) solid; padding-left: 4px; color: rgb(160,160,160);}
 .cell-content {padding: 4px; padding-top: 7px; font-size: 1.2em;}
 .my-location {font-style: normal; text-decoration: none;}
+.history-cell {width: 100px; height: 100px; float: left; margin: 5px; text-align: center;}
+.history-cell img {width: 90px;}
 
 /* unique ids */
-#ambient-result {height: 330px; margin-top: -34px; width: 90%; margin-left: 5%; overflow: hidden; border-radius: 3px;}
+#ambient-result {height: 330px; margin-top: -34px; width: 90%; margin-left: 5%; overflow: hidden; border-radius: 3px; text-align: center;}
 .page-title img {margin-top: 15px; width: 200px;}
 #btn-ambient {background-color: #FF6E6E;}
 #btn-insulation {background-color: #7AD9E1;}
 #img-efficiency {width: 200px; height: auto; margin-top: -9px;}
-#rvalue {background-color: darkseagreen; font-family: "HelveticaNeue-Bold"; color: white; border-radius: 60px; padding: 14px;}
+#rvalue {background-color: #5CBA27; font-family: "HelveticaNeue-Bold"; color: white; border-radius: 60px; padding: 14px;}
+.history {width: 100%; overflow: hidden; height: 200px; }
 
 /* State Changes */
 #page-landing {display: inline;}

@@ -59,11 +59,18 @@ $(document).ready(function() {
 	})
 
 	// ----> recommendations
-	$('.btn-rec').on('click', function () {
+	$('.btn-rec-eff').on('click', function () {
 		$('svg').remove();
 		$('#page-insulation2').hide();
 		$('#page-ambient').hide();
-		$('#page-rec').show();
+		$('#page-rec-eff').show();
+	})
+
+	$('.btn-rec-amb').on('click', function () {
+		$('svg').remove();
+		$('#page-insulation2').hide();
+		$('#page-ambient').hide();
+		$('#page-rec-amb').show();
 	})
 
 
@@ -91,8 +98,9 @@ $(document).ready(function() {
 		$('#page-measure').show();
 	})
 	//measure -> landing
-	$('#go-home').on('click', function () {
-		$('#page-rec').hide();
+	$('.go-home').on('click', function () {
+		$('#page-rec-amb').hide();
+		$('#page-rec-eff').hide();
 		$('#page-landing').show();
 	})
 
@@ -135,7 +143,7 @@ function ShowAmbientResult (location) {
 	    redraw();
 	}, 2000);
 
-	var w = 41, h = 330; //maximum bar size
+	var w = 42, h = 330; //maximum bar size
 
 	var x = d3.scale.linear().domain([0, 1]).range([0, w]);
 	var y = d3.scale.linear().domain([0, 100]).rangeRound([0, h]);
