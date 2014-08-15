@@ -2,6 +2,16 @@ var myLocationID;
 var myLocation;
 var myMeasurement;
 var outsideT; var interiorT; var exteriorT;
+
+var locationMap = {};
+	locationMap[bed1] = "e8f69c7c-4d48-5b7f-adaf-5b07fc016989";
+	locationMap[bed2] = "4969951e-3c0b-5523-851c-af3a019e89a3";
+	locationMap[bed3] = "6099a518-acd0-5981-bcfa-4529d6a44c83";
+	locationMap[bathroom] = "8a9003ad-6096-5163-bfe5-1f455aaf9957";
+	locationMap[living] = "34097bec-261e-5fa6-be0c-49cbcc399ca4";
+	locationMap[kitchen] = "930cf07b-53d3-556f-9027-691be1926cbf";
+
+
 var RChart = [ [74.8, 15.0, 7.5, 5.0, 3.7, 3.0, 2.5, 2.1, 1.9],
 				[68.0, 13.6, 6.8, 4.5, 3.4, 2.7, 2.3, 1.9, 1.7],
 				[61.2, 12.2, 6.1, 4.1, 3.1, 2.4, 2.0, 1.7, 1.5],
@@ -17,7 +27,7 @@ $(document).ready(function() {
 
 /////page forward
 	
-	//landing -> measure	
+	//landing page: choose a location (measure)
 	$('.location-img').on('click', function () {
 		myLocationID = $(this).attr("id");
 
@@ -36,6 +46,7 @@ $(document).ready(function() {
 		ShowAmbientResult(myLocationID);
 	})
 
+//WAIT
 	//measure -> insulation input
 	$('#btn-insulation').on('click', function () {
 		$('#page-measure').hide();
@@ -58,7 +69,7 @@ $(document).ready(function() {
 		};
 	})
 
-	// ----> recommendations
+	//----> recommendations
 	$('.btn-rec-eff').on('click', function () {
 		$('svg').remove();
 		$('#page-insulation2').hide();
@@ -197,6 +208,7 @@ function ShowAmbientResult (location) {
 
 }
 
+//Archived
 	// var margin = {top: 20, right: 20, bottom: 30, left: 40},
 	//     width = 960 - margin.left - margin.right,
 	//     height = 500 - margin.top - margin.bottom;
